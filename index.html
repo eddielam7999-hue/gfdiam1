@@ -3,103 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>濠藝珠寶改造專家 | 本土工藝 & 培育鑽石訂造</title>
+    <title>GF-Diam Wedding ring | 培育鑽石與珠寶訂製</title>
+    <!-- FontAwesome 圖示庫 (用於社交平台 Icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #0f1115;
-            --card-bg: #181b22;
-            --accent-gold: #d4af37;
-            --text-light: #f1f1f1;
-            --text-muted: #a0a0a0;
+            --bg-white: #ffffff;
+            --bg-light: #fdfdfd;
+            --card-bg: #ffffff;
+            --text-dark: #222222;
+            --text-muted: #666666;
+            --accent-gold: #c5a059;
+            --border-color: #eeeeee;
             --whatsapp-green: #25d366;
-            --price-red: #ff5252;
+            --price-red: #d93838;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+        body { background-color: var(--bg-white); color: var(--text-dark); line-height: 1.6; }
 
-        /* 頂部導覽列 */
-        header { background: rgba(15, 17, 21, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--accent-gold); letter-spacing: 2px; }
-        nav a { color: var(--text-light); text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
+        /* 頂部 Header & Logo */
+        header { background: rgba(255, 255, 255, 0.98); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        
+        .logo-container { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .logo-diamond { font-size: 1.2rem; color: #7094b7; }
+        .logo-text-box { display: flex; flex-direction: column; }
+        .logo-title { font-size: 1.2rem; font-weight: 700; color: var(--text-dark); letter-spacing: 1px; font-style: italic; font-family: Georgia, serif; line-height: 1.1; }
+        .logo-subtitle { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.5px; }
+
+        nav a { color: var(--text-dark); text-decoration: none; margin-left: 20px; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
         nav a:hover { color: var(--accent-gold); }
 
-        /* HERO SLIDER 輪播圖樣式 */
-        .slider-container { position: relative; width: 100%; height: 65vh; overflow: hidden; }
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; display: flex; align-items: center; justify-content: center; }
+        /* HERO SLIDER 輪播大圖 (已移除文字與遮罩) */
+        .slider-container { position: relative; width: 100%; height: 60vh; min-height: 350px; overflow: hidden; background: #fafafa; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; }
         .slide.active { opacity: 1; }
-        .slide img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
-        .slide-content { position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 0 20px; }
-        .slide-content h1 { font-size: 2.3rem; color: var(--accent-gold); margin-bottom: 15px; }
-        .slide-content p { font-size: 1.1rem; color: #fff; margin-bottom: 20px; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* 輪播控制圓點 */
-        .dots-container { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
-        .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: 0.3s; }
-        .dot.active { background: var(--accent-gold); transform: scale(1.2); }
+        .dots-container { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+        .dot { width: 8px; height: 8px; background: rgba(0,0,0,0.2); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--text-dark); transform: scale(1.3); }
 
-        /* 全局通用按鈕 */
-        .btn-ws { background-color: var(--whatsapp-green); color: white; padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; }
-        .btn-ws:hover { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+        /* 通用按鈕 */
+        .btn-ws { background-color: var(--whatsapp-green); color: white; padding: 10px 22px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; transition: 0.3s; }
+        .btn-ws:hover { background-color: #1eb954; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
 
         /* 標題樣式 */
-        .section-title { text-align: center; font-size: 1.8rem; color: var(--accent-gold); margin: 50px 0 30px; }
-        .section-subtitle { text-align: center; color: var(--text-muted); margin-top: -20px; margin-bottom: 40px; font-size: 0.95rem; }
+        .section-title { text-align: center; font-size: 1.6rem; color: var(--text-dark); margin: 50px 0 10px; font-weight: 600; letter-spacing: 1px; }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 35px; font-size: 0.9rem; }
 
-        /* 鑽石特價產品展示牆 */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
-        .product-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #2a2e39; transition: 0.3s; text-align: center; }
-        .product-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); }
-        .product-card img { width: 100%; height: 220px; object-fit: cover; }
-        .product-info { padding: 20px; }
-        .product-tag { background: rgba(212, 175, 55, 0.15); color: var(--accent-gold); font-size: 0.8rem; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
-        .product-title { font-size: 1.1rem; color: var(--text-light); margin-bottom: 8px; font-weight: bold; }
-        .product-price { color: var(--price-red); font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; }
+        /* 鑽石產品展示區 */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
+        .product-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); transition: 0.3s; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .product-card img { width: 100%; height: 230px; object-fit: cover; background: #f9f9f9; }
+        .product-info { padding: 20px 15px; }
+        .product-tag { background: #f5efe6; color: var(--accent-gold); font-size: 0.75rem; padding: 3px 10px; border-radius: 12px; display: inline-block; margin-bottom: 8px; font-weight: 600; }
+        .product-title { font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; font-weight: 600; }
+        .product-price { color: var(--price-red); font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; }
 
-        /* 訂製流程 4 步驟 */
+        /* 訂製流程 */
         .process-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
-        .process-step { background: var(--card-bg); padding: 25px 20px; border-radius: 10px; border-left: 4px solid var(--accent-gold); }
-        .step-number { font-size: 0.85rem; font-weight: bold; color: var(--accent-gold); letter-spacing: 1px; margin-bottom: 8px; }
-        .step-title { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+        .process-step { background: #fafafa; padding: 25px 20px; border-radius: 8px; border-top: 3px solid var(--accent-gold); }
+        .step-number { font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 1px; margin-bottom: 6px; }
+        .step-title { font-size: 1.05rem; margin-bottom: 8px; color: var(--text-dark); font-weight: 600; }
         .step-desc { font-size: 0.85rem; color: var(--text-muted); }
         .step-desc ul { list-style: none; padding: 0; margin-top: 5px; }
         .step-desc li { margin-bottom: 4px; position: relative; padding-left: 12px; }
         .step-desc li::before { content: "•"; color: var(--accent-gold); position: absolute; left: 0; }
 
-        /* 浮動 WhatsApp 按鈕 */
-        .float-ws { position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp-green); color: white; border-radius: 50px; padding: 12px 22px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.5); z-index: 1000; }
+        /* 社交平台快捷選單 (Jump Bar) */
+        .social-jump-section { text-align: center; padding: 40px 5% 20px; background: #fafafa; margin-top: 60px; border-top: 1px solid var(--border-color); }
+        .social-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        .social-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 500; transition: 0.3s; }
+        .social-item:hover { transform: translateY(-3px); color: var(--accent-gold); }
+        .social-icon-box { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin-bottom: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        .bg-carousell { background: #ff2b52; font-weight: bold; font-size: 1.2rem; }
+        .bg-facebook { background: #1877f2; }
+        .bg-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .bg-maps { background: #34a853; }
+        .bg-review { background: #4285f4; }
 
-        footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid #222; margin-top: 60px; }
+        /* 浮動 WhatsApp 按鈕 */
+        .float-ws { position: fixed; bottom: 25px; right: 25px; background: var(--whatsapp-green); color: white; border-radius: 50px; padding: 12px 20px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 1000; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+
+        footer { text-align: center; padding: 25px; color: var(--text-muted); font-size: 0.8rem; background: #ffffff; border-top: 1px solid var(--border-color); }
     </style>
 </head>
 <body>
 
+    <!-- 頂部導覽列 (帶有 GF-Diam Logo) -->
     <header>
-        <div class="logo">HERITAGE JEWELS</div>
+        <a href="#" class="logo-container">
+            <span class="logo-diamond">💎</span>
+            <div class="logo-text-box">
+                <span class="logo-title">GF-Diam</span>
+                <span class="logo-subtitle">Wedding ring</span>
+            </div>
+        </a>
         <nav>
-            <a href="#products">筍價鑽石專區</a>
+            <a href="#products">熱賣產品</a>
             <a href="#process">訂製流程</a>
-            <a href="#contact">聯絡我們</a>
+            <a href="#socials">聯絡我們</a>
         </nav>
     </header>
 
-    <!-- HERO SLIDER 輪播大圖 -->
+    <!-- HERO SLIDER 純圖片自動輪播 (無任何文字遮罩) -->
     <div class="slider-container">
         <div class="slide active">
-            <img src="banner1004.jpg" alt="全港最筍價培育鑽石">
-            <div class="slide-content">
-                <h1>全港最筍價 培育鑽石批發零售</h1>
-                <p>附設 IGI 國際認證書｜1.5ct 圓鑽僅 $2,288 起</p>
-                <a href="https://wa.me/85262769030?text=你好，我想查詢筍價鑽石優惠" class="btn-ws" target="_blank">💬 WhatsApp 傳圖即時搶購</a>
-            </div>
+            <img src="banner1004.jpg" alt="Banner 1">
         </div>
         <div class="slide">
-            <img src="flow-01.png" alt="舊珠寶重塑與改造專家">
-            <div class="slide-content">
-                <h1>舊珠寶重塑與改造專家</h1>
-                <p>舊托換新托只需 2-4 小時｜即日拎走｜舊托可抵消部份費用</p>
-                <a href="https://wa.me/85262769030?text=你好，我想查詢舊珠寶改造" class="btn-ws" target="_blank">💬 預約舊首飾改造</a>
-            </div>
+            <img src="flow-01.png" alt="Banner 2">
         </div>
 
         <div class="dots-container">
@@ -108,78 +124,80 @@
         </div>
     </div>
 
-    <!-- 筍價鑽石產品展售區 -->
-    <h2 class="section-title" id="products">🔥 嚴選特價裸鑽專區</h2>
-    <p class="section-subtitle">附設 IGI 國際認證書 ｜ 支持來圖客製化戒托</p>
+    <!-- 鑽石產品展售區 -->
+    <h2 class="section-title" id="products">精選特價鑽石</h2>
+    <p class="section-subtitle">支持來圖客製化戒托 ｜ 附國際認證書</p>
     
     <div class="products-grid">
-        <!-- 產品 1 (1.5ct 圓鑽) -->
+        <!-- 產品 1 -->
         <div class="product-card">
             <img src="banner1004.jpg" alt="1.5ct D色 VS 淨度 圓形鑽石">
             <div class="product-info">
                 <span class="product-tag">全港最筍價</span>
                 <div class="product-title">1.5ct D色 VS 淨度 圓形鑽石</div>
                 <div class="product-price">$: 2,288</div>
-                <a href="https://wa.me/85262769030?text=你好，我想查詢1.5ct D色 VS淨度 ($2,288) 鑽石" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢1.5ct D色 VS淨度 ($2,288) 鑽石" class="btn-ws" target="_blank">💬 即時查詢</a>
             </div>
         </div>
 
-        <!-- 產品 2 (2ct 圓鑽) -->
+        <!-- 產品 2 -->
         <div class="product-card">
             <img src="banner1005.jpg" alt="2ct D色 VS 淨度 圓形鑽石">
             <div class="product-info">
                 <span class="product-tag">全港最筍價</span>
                 <div class="product-title">2ct D色 VS 淨度 圓形鑽石</div>
                 <div class="product-price">$: 3,399</div>
-                <a href="https://wa.me/85262769030?text=你好，我想查詢2ct D色 VS淨度 ($3,399) 鑽石" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢2ct D色 VS淨度 ($3,399) 鑽石" class="btn-ws" target="_blank">💬 即時查詢</a>
             </div>
         </div>
 
-        <!-- 產品 3 (Happy Heart 粉鑽) -->
+        <!-- 產品 3 -->
         <div class="product-card">
             <img src="banner1001.jpg" alt="Happy Heart Fancy Intense Pink 1卡">
             <div class="product-info">
                 <span class="product-tag">買貴就賠</span>
                 <div class="product-title">Happy Heart 1卡 Fancy Intense Pink 粉鑽</div>
                 <div class="product-price">HKD: 2,588</div>
-                <a href="https://wa.me/85262769030?text=你好，我想查詢Happy Heart 1卡粉鑽 ($2,588)" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢Happy Heart 1卡粉鑽 ($2,588)" class="btn-ws" target="_blank">💬 即時查詢</a>
             </div>
         </div>
 
-        <!-- 產品 4 (2 Ct 橢圓形鑽石) -->
+        <!-- 產品 4 -->
         <div class="product-card">
             <img src="banner1002.jpg" alt="2 Ct D VS EX N 橢圓形鑽石">
             <div class="product-info">
                 <span class="product-tag">全港最筍價</span>
                 <div class="product-title">2 Ct D VS EX N 橢圓形鑽石</div>
                 <div class="product-price">$: 2,999</div>
-                <a href="https://wa.me/85262769030?text=你好，我想查詢2 Ct 橢圓形鑽石 ($2,999)" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢2 Ct 橢圓形鑽石 ($2,999)" class="btn-ws" target="_blank">💬 即時查詢</a>
             </div>
         </div>
 
-        <!-- 產品 5 (2 Ct 長方形鑽石) -->
+        <!-- 產品 5 -->
         <div class="product-card">
             <img src="banner1003.jpg" alt="2 Ct D VS EX N 祖母綠/長方形鑽石">
             <div class="product-info">
                 <span class="product-tag">全港最筍價</span>
                 <div class="product-title">2 Ct D VS EX N 祖母綠/長方形鑽石</div>
                 <div class="product-price">$: 2,566</div>
-                <a href="https://wa.me/85262769030?text=你好，我想查詢2 Ct 長方形鑽石 ($2,566)" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢2 Ct 長方形鑽石 ($2,566)" class="btn-ws" target="_blank">💬 即時查詢</a>
             </div>
         </div>
     </div>
 
     <!-- 訂製流程 4 步驟 -->
-    <h2 class="section-title" id="process">💎 訂製流程</h2>
+    <h2 class="section-title" id="process">訂製流程</h2>
+    <p class="section-subtitle">專屬客製化與首飾改造服務</p>
+
     <div class="process-container">
         <div class="process-step">
             <div class="step-number">STEP 01</div>
-            <div class="step-title">確定 3D 訂製施工圖</div>
+            <div class="step-title">確定 3D 訂製圖</div>
             <div class="step-desc">根據來圖或款式溝通，擬定最精確的 3D 立體設計圖。</div>
         </div>
         <div class="process-step">
             <div class="step-number">STEP 02</div>
-            <div class="step-title">付訂金</div>
+            <div class="step-title">支付訂金</div>
             <div class="step-desc">確認施工圖與鑽石品質後付訂，隨即開始工場鑲嵌排單。</div>
         </div>
         <div class="process-step">
@@ -200,11 +218,49 @@
         </div>
     </div>
 
+    <!-- 社交平台與聯絡 Jump 區塊 -->
+    <section class="social-jump-section" id="socials">
+        <h2 class="section-title" style="margin-top:0;">關注與聯絡我們</h2>
+        <p class="section-subtitle">查看更多實物款式與客戶好評</p>
+
+        <div class="social-grid">
+            <!-- Carousell -->
+            <a href="https://www.carousell.com.hk/u/gf-diam/" target="_blank" class="social-item">
+                <div class="social-icon-box bg-carousell">C</div>
+                <span>Carousell</span>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/goldenfashion0418?mibextid=wwXIfr" target="_blank" class="social-item">
+                <div class="social-icon-box bg-facebook"><i class="fab fa-facebook-f"></i></div>
+                <span>Facebook</span>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/gamfook_diamant?igsh=MTZueWg2cmZnN2R2eg%3D%3D&utm_source=qr" target="_blank" class="social-item">
+                <div class="social-icon-box bg-instagram"><i class="fab fa-instagram"></i></div>
+                <span>Instagram</span>
+            </a>
+
+            <!-- Google Maps 導航 -->
+            <a href="https://maps.app.goo.gl/qrumFRv98FqpxCJz9?g_st=ic" target="_blank" class="social-item">
+                <div class="social-icon-box bg-maps"><i class="fas fa-map-marker-alt"></i></div>
+                <span>導航</span>
+            </a>
+
+            <!-- Google Review 評論 -->
+            <a href="https://g.page/r/CW9MlDhFkhjEEAE/review" target="_blank" class="social-item">
+                <div class="social-icon-box bg-review"><i class="fab fa-google"></i></div>
+                <span>評論</span>
+            </a>
+        </div>
+    </section>
+
     <!-- 浮動按鈕 -->
-    <a href="https://wa.me/85262769030?text=你好，我想諮詢鑽石訂造服務" class="float-ws" target="_blank">💬 聯絡專家報價</a>
+    <a href="https://wa.me/85262769030?text=你好，我想諮詢GF-Diam鑽石訂造服務" class="float-ws" target="_blank"><i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> 聯絡專家報價</a>
 
     <footer>
-        <p>© 2026 Heritage Jewels. 香港法例第615章A類註冊人證明書號碼: A-B-23-12-03104</p>
+        <p>© 2026 GF-Diam Wedding ring. All Rights Reserved.</p>
     </footer>
 
     <!-- HERO SLIDER 腳本 -->

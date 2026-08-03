@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>濠藝珠寶改造專家 | 本土工藝 & 培育鑽石訂造</title>
+    <style>
+        :root {
+            --bg-dark: #0f1115;
+            --card-bg: #181b22;
+            --accent-gold: #d4af37;
+            --text-light: #f1f1f1;
+            --text-muted: #a0a0a0;
+            --whatsapp-green: #25d366;
+            --price-red: #ff5252;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
+
+        /* 頂部導覽列 */
+        header { background: rgba(15, 17, 21, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #222; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--accent-gold); letter-spacing: 2px; }
+        nav a { color: var(--text-light); text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
+        nav a:hover { color: var(--accent-gold); }
+
+        /* HERO SLIDER 輪播圖樣式 */
+        .slider-container { position: relative; width: 100%; height: 65vh; overflow: hidden; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; display: flex; align-items: center; justify-content: center; }
+        .slide.active { opacity: 1; }
+        .slide img { position: absolute; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); }
+        .slide-content { position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 0 20px; }
+        .slide-content h1 { font-size: 2.3rem; color: var(--accent-gold); margin-bottom: 15px; }
+        .slide-content p { font-size: 1.1rem; color: #fff; margin-bottom: 20px; }
+
+        /* 輪播控制圓點 */
+        .dots-container { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
+        .dot { width: 10px; height: 10px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--accent-gold); transform: scale(1.2); }
+
+        /* 全局通用按鈕 */
+        .btn-ws { background-color: var(--whatsapp-green); color: white; padding: 10px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; }
+        .btn-ws:hover { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+
+        /* 標題樣式 */
+        .section-title { text-align: center; font-size: 1.8rem; color: var(--accent-gold); margin: 50px 0 30px; }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-top: -20px; margin-bottom: 40px; font-size: 0.95rem; }
+
+        /* 鑽石特價產品展示牆 */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
+        .product-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #2a2e39; transition: 0.3s; text-align: center; }
+        .product-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); }
+        .product-card img { width: 100%; height: 220px; object-fit: cover; }
+        .product-info { padding: 20px; }
+        .product-tag { background: rgba(212, 175, 55, 0.15); color: var(--accent-gold); font-size: 0.8rem; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+        .product-title { font-size: 1.1rem; color: var(--text-light); margin-bottom: 8px; font-weight: bold; }
+        .product-price { color: var(--price-red); font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; }
+
+        /* 訂製流程 4 步驟 */
+        .process-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
+        .process-step { background: var(--card-bg); padding: 25px 20px; border-radius: 10px; border-left: 4px solid var(--accent-gold); }
+        .step-number { font-size: 0.85rem; font-weight: bold; color: var(--accent-gold); letter-spacing: 1px; margin-bottom: 8px; }
+        .step-title { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+        .step-desc { font-size: 0.85rem; color: var(--text-muted); }
+        .step-desc ul { list-style: none; padding: 0; margin-top: 5px; }
+        .step-desc li { margin-bottom: 4px; position: relative; padding-left: 12px; }
+        .step-desc li::before { content: "•"; color: var(--accent-gold); position: absolute; left: 0; }
+
+        /* 浮動 WhatsApp 按鈕 */
+        .float-ws { position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp-green); color: white; border-radius: 50px; padding: 12px 22px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.5); z-index: 1000; }
+
+        footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid #222; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">HERITAGE JEWELS</div>
+        <nav>
+            <a href="#products">筍價鑽石專區</a>
+            <a href="#process">訂製流程</a>
+            <a href="#contact">聯絡我們</a>
+        </nav>
+    </header>
+
+    <!-- HERO SLIDER 輪播大圖 -->
+    <div class="slider-container">
+        <div class="slide active">
+            <img src="images/banner1004.jpg" alt="全港最筍價培育鑽石">
+            <div class="slide-content">
+                <h1>全港最筍價 培育鑽石批發零售</h1>
+                <p>附設 IGI 國際認證書｜1.5ct 圓鑽僅 $2,288 起</p>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢筍價鑽石優惠" class="btn-ws" target="_blank">💬 WhatsApp 傳圖即時搶購</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="images/flow-01.png" alt="舊珠寶重塑與改造專家">
+            <div class="slide-content">
+                <h1>舊珠寶重塑與改造專家</h1>
+                <p>舊托換新托只需 2-4 小時｜即日拎走｜舊托可抵消部份費用</p>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢舊珠寶改造" class="btn-ws" target="_blank">💬 預約舊首飾改造</a>
+            </div>
+        </div>
+
+        <div class="dots-container">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+        </div>
+    </div>
+
+    <!-- 筍價鑽石產品展售區 -->
+    <h2 class="section-title" id="products">🔥 嚴選特價裸鑽專區</h2>
+    <p class="section-subtitle">附設 IGI 國際認證書 ｜ 支持來圖客製化戒托</p>
+    
+    <div class="products-grid">
+        <!-- 產品 1 (1.5ct 圓鑽) -->
+        <div class="product-card">
+            <img src="images/banner1004.jpg" alt="1.5ct D色 VS 淨度 圓形鑽石">
+            <div class="product-info">
+                <span class="product-tag">全港最筍價</span>
+                <div class="product-title">1.5ct D色 VS 淨度 圓形鑽石</div>
+                <div class="product-price">$: 2,288</div>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢1.5ct D色 VS淨度 ($2,288) 鑽石" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+            </div>
+        </div>
+
+        <!-- 產品 2 (2ct 圓鑽) -->
+        <div class="product-card">
+            <img src="images/banner1005.jpg" alt="2ct D色 VS 淨度 圓形鑽石">
+            <div class="product-info">
+                <span class="product-tag">全港最筍價</span>
+                <div class="product-title">2ct D色 VS 淨度 圓形鑽石</div>
+                <div class="product-price">$: 3,399</div>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢2ct D色 VS淨度 ($3,399) 鑽石" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+            </div>
+        </div>
+
+        <!-- 產品 3 (Happy Heart 粉鑽) -->
+        <div class="product-card">
+            <img src="images/banner1001.jpg" alt="Happy Heart Fancy Intense Pink 1卡">
+            <div class="product-info">
+                <span class="product-tag">買貴就賠</span>
+                <div class="product-title">Happy Heart 1卡 Fancy Intense Pink 粉鑽</div>
+                <div class="product-price">HKD: 2,588</div>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢Happy Heart 1卡粉鑽 ($2,588)" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+            </div>
+        </div>
+
+        <!-- 產品 4 (2 Ct 橢圓形鑽石) -->
+        <div class="product-card">
+            <img src="images/banner1002.jpg" alt="2 Ct D VS EX N 橢圓形鑽石">
+            <div class="product-info">
+                <span class="product-tag">全港最筍價</span>
+                <div class="product-title">2 Ct D VS EX N 橢圓形鑽石</div>
+                <div class="product-price">$: 2,999</div>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢2 Ct 橢圓形鑽石 ($2,999)" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+            </div>
+        </div>
+
+        <!-- 產品 5 (2 Ct 長方形鑽石) -->
+        <div class="product-card">
+            <img src="images/banner1003.jpg" alt="2 Ct D VS EX N 祖母綠/長方形鑽石">
+            <div class="product-info">
+                <span class="product-tag">全港最筍價</span>
+                <div class="product-title">2 Ct D VS EX N 祖母綠/長方形鑽石</div>
+                <div class="product-price">$: 2,566</div>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢2 Ct 長方形鑽石 ($2,566)" class="btn-ws" target="_blank">💬 即時查詢優惠</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 訂製流程 4 步驟 -->
+    <h2 class="section-title" id="process">💎 訂製流程</h2>
+    <div class="process-container">
+        <div class="process-step">
+            <div class="step-number">STEP 01</div>
+            <div class="step-title">確定 3D 訂製施工圖</div>
+            <div class="step-desc">根據來圖或款式溝通，擬定最精確的 3D 立體設計圖。</div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">STEP 02</div>
+            <div class="step-title">付訂金</div>
+            <div class="step-desc">確認施工圖與鑽石品質後付訂，隨即開始工場鑲嵌排單。</div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">STEP 03</div>
+            <div class="step-title">工期 10 - 14 日</div>
+            <div class="step-desc">本土自設工場匠人精心打造與精細拋光鑲嵌。</div>
+        </div>
+        <div class="process-step">
+            <div class="step-number">STEP 04</div>
+            <div class="step-title">門市驗貨取件</div>
+            <div class="step-desc">
+                <ul>
+                    <li>舊托換新托約 2-4 個鐘（即日拎走）</li>
+                    <li>現場核對 GIA/IGI 鑽石腰圍編碼</li>
+                    <li>舊托可以抵消一部份費用</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 浮動按鈕 -->
+    <a href="https://wa.me/85262769030?text=你好，我想諮詢鑽石訂造服務" class="float-ws" target="_blank">💬 聯絡專家報價</a>
+
+    <footer>
+        <p>© 2026 Heritage Jewels. 香港法例第615章A類註冊人證明書號碼: A-B-23-12-03104</p>
+    </footer>
+
+    <!-- HERO SLIDER 腳本 -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const slideInterval = 4000;
+
+        function changeSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            let next = (currentSlide + 1) % slides.length;
+            changeSlide(next);
+        }
+
+        function goToSlide(index) {
+            changeSlide(index);
+            resetTimer();
+        }
+
+        let timer = setInterval(nextSlide, slideInterval);
+        function resetTimer() {
+            clearInterval(timer);
+            timer = setInterval(nextSlide, slideInterval);
+        }
+    </script>
+</body>
+</html>

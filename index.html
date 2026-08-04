@@ -23,38 +23,36 @@
         body { background-color: var(--bg-white); color: var(--text-dark); line-height: 1.6; }
 
         /* --------------------------------------------------
-           頂部 Header & Bar (整條 Bar 加大，Logo擺最左)
+           頂部 Header & Bar (Logo 滿版貼左邊、無白邊)
         -------------------------------------------------- */
         header { 
-            background: rgba(255, 255, 255, 0.98); 
+            background: #ffffff; 
             position: sticky; 
             top: 0; 
             z-index: 100; 
             border-bottom: 1px solid var(--border-color); 
-            padding: 0 4%; /* 左右留白邊距 */
-            height: 95px; /* 加大整條 Bar 的高度 */
+            padding: 0 4% 0 0; /* 左邊 padding 設為 0，令 Logo 完全貼最左邊角 */
+            height: 95px; /* Bar 的高度 */
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.04); 
+            overflow: hidden; /* 確保 Logo 不會超出 Header 範圍 */
         }
         
         .logo-container { 
             display: flex; 
             align-items: center; 
             text-decoration: none; 
-            height: 100%;
+            height: 100%; /* 填滿整個 Bar 的高度 */
         }
 
-        /* Logo 放大並置左 */
+        /* Logo 滿版覆蓋整條 Bar */
         .logo-img { 
-            height: 70px; /* 高度放大至 70px */
+            height: 100%; /* 100% 覆蓋整個 Bar，不留上下白邊 */
             width: auto; 
-            object-fit: contain; 
-            transition: transform 0.3s;
-        }
-        .logo-img:hover {
-            transform: scale(1.03);
+            object-fit: cover; /* 確保圖片充滿並適應區塊 */
+            display: block;
         }
 
         /* 導覽選單樣式 */
@@ -67,8 +65,8 @@
         nav a { 
             color: var(--text-dark); 
             text-decoration: none; 
-            font-size: 1.1rem; /* 字體加大 */
-            font-weight: 600; /* 字體加粗 */
+            font-size: 1.1rem; 
+            font-weight: 600; 
             letter-spacing: 0.8px;
             padding: 8px 0;
             position: relative;
@@ -156,17 +154,16 @@
 
         /* 手機端適應 */
         @media (max-width: 600px) {
-            header { height: 75px; padding: 0 3%; }
-            .logo-img { height: 55px; }
-            nav { gap: 15px; }
-            nav a { font-size: 0.95rem; }
+            header { height: 75px; padding: 0 3% 0 0; }
+            nav { gap: 12px; }
+            nav a { font-size: 0.9rem; }
             .slider-container { height: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 頂部導覽列 -->
+    <!-- 頂部導覽列 (Logo 覆蓋整個高，不留白邊，最左角) -->
     <header>
         <a href="#" class="logo-container">
             <img src="logo1.jpg" alt="GF-Diam Logo" class="logo-img">

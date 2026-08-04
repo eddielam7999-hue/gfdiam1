@@ -23,7 +23,7 @@
         body { background-color: var(--bg-white); color: var(--text-dark); line-height: 1.6; }
 
         /* --------------------------------------------------
-           頂部 Header & Bar (Logo 滿版貼左邊、無白邊)
+           頂部 Header
         -------------------------------------------------- */
         header { 
             background: #ffffff; 
@@ -31,35 +31,33 @@
             top: 0; 
             z-index: 100; 
             border-bottom: 1px solid var(--border-color); 
-            padding: 0 4% 0 0; /* 左邊 padding 設為 0，令 Logo 完全貼最左邊角 */
-            height: 95px; /* Bar 的高度 */
+            padding: 0 4% 0 0; 
+            height: 95px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.04); 
-            overflow: hidden; /* 確保 Logo 不會超出 Header 範圍 */
+            overflow: hidden; 
         }
         
         .logo-container { 
             display: flex; 
             align-items: center; 
             text-decoration: none; 
-            height: 100%; /* 填滿整個 Bar 的高度 */
+            height: 100%; 
         }
 
-        /* Logo 滿版覆蓋整條 Bar */
         .logo-img { 
-            height: 100%; /* 100% 覆蓋整個 Bar，不留上下白邊 */
+            height: 100%; 
             width: auto; 
-            object-fit: cover; /* 確保圖片充滿並適應區塊 */
+            object-fit: cover; 
             display: block;
         }
 
-        /* 導覽選單樣式 */
         nav {
             display: flex;
             align-items: center;
-            gap: 35px; /* 選項之間的間距 */
+            gap: 35px; 
         }
 
         nav a { 
@@ -73,7 +71,6 @@
             transition: color 0.3s; 
         }
 
-        /* Hover 金色下劃線效果 */
         nav a::after {
             content: '';
             position: absolute;
@@ -94,7 +91,7 @@
         }
 
         /* --------------------------------------------------
-           HERO SLIDER 精巧小尺寸輪播
+           HERO SLIDER
         -------------------------------------------------- */
         .slider-section { padding: 20px 5% 10px; max-width: 840px; margin: 0 auto; }
         .slider-container { position: relative; width: 100%; height: 280px; border-radius: 12px; overflow: hidden; background: #f5f5f5; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
@@ -106,15 +103,13 @@
         .dot { width: 8px; height: 8px; background: rgba(0,0,0,0.25); border-radius: 50%; cursor: pointer; transition: 0.3s; }
         .dot.active { background: var(--accent-gold); transform: scale(1.3); }
 
-        /* 通用按鈕 */
         .btn-ws { background-color: var(--whatsapp-green); color: white; padding: 10px 22px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; transition: 0.3s; }
         .btn-ws:hover { background-color: #1eb954; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
 
-        /* 標題樣式 */
         .section-title { text-align: center; font-size: 1.6rem; color: var(--text-dark); margin: 40px 0 10px; font-weight: 600; letter-spacing: 1px; }
         .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 35px; font-size: 0.9rem; }
 
-        /* 鑽石產品展示區 */
+        /* 鑽石產品區 */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
         .product-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); transition: 0.3s; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
@@ -124,7 +119,7 @@
         .product-title { font-size: 1rem; color: var(--text-dark); margin-bottom: 8px; font-weight: 600; }
         .product-price { color: var(--price-red); font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; }
 
-        /* 專業維修與改款展示區塊 */
+        /* 維修展示區 */
         .repair-section { padding: 0 5%; max-width: 1200px; margin: 0 auto 40px; }
         .repair-banner { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); text-align: center; border: 1px solid var(--border-color); }
         .repair-banner img { width: 100%; height: auto; display: block; object-fit: cover; }
@@ -139,8 +134,101 @@
         .step-desc li { margin-bottom: 4px; position: relative; padding-left: 12px; }
         .step-desc li::before { content: "•"; color: var(--accent-gold); position: absolute; left: 0; }
 
-        /* 社交平台快捷選單 (Jump Bar) */
-        .social-jump-section { text-align: center; padding: 40px 5% 20px; background: #fafafa; margin-top: 60px; border-top: 1px solid var(--border-color); }
+        /* --------------------------------------------------
+           公司資訊大 Banner (新增於「關注與聯絡我們」上方)
+        -------------------------------------------------- */
+        .company-info-banner {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin-top: 50px;
+        }
+
+        .company-info-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .info-top-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .info-top-header .main-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .info-top-header .sub-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .info-top-header .reg-info {
+            font-size: 0.82rem;
+            color: #cccccc;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+
+        .info-body-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .info-image-box {
+            flex: 1;
+            min-width: 280px;
+            max-width: 380px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .info-image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .info-details-box {
+            flex: 2;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            min-width: 300px;
+            flex-wrap: wrap;
+        }
+
+        .info-col {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .info-col h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .info-col p {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace, -apple-system, sans-serif;
+        }
+
+        /* 社交平台區域 */
+        .social-jump-section { text-align: center; padding: 40px 5% 20px; background: #fafafa; border-top: 1px solid var(--border-color); }
         .social-grid { display: flex; justify-content: center; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
         .social-item { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: var(--text-dark); font-size: 0.85rem; font-weight: 500; transition: 0.3s; }
         .social-item:hover { transform: translateY(-3px); color: var(--accent-gold); }
@@ -152,12 +240,16 @@
         .bg-maps { background: #34a853; }
         .bg-review { background: #4285f4; }
 
-        /* 浮動 WhatsApp 按鈕 */
         .float-ws { position: fixed; bottom: 25px; right: 25px; background: var(--whatsapp-green); color: white; border-radius: 50px; padding: 12px 20px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 1000; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
 
         footer { text-align: center; padding: 25px; color: var(--text-muted); font-size: 0.8rem; background: #ffffff; border-top: 1px solid var(--border-color); }
 
-        /* 手機端適應 */
+        @media (max-width: 768px) {
+            .info-body-grid { flex-direction: column; text-align: center; }
+            .info-image-box { max-width: 100%; margin: 0 auto; }
+            .info-details-box { flex-direction: column; text-align: left; gap: 20px; }
+        }
+
         @media (max-width: 600px) {
             header { height: 75px; padding: 0 3% 0 0; }
             nav { gap: 12px; }
@@ -168,7 +260,7 @@
 </head>
 <body>
 
-    <!-- 頂部導覽列 (Logo 覆蓋整個高，不留白邊，最左角) -->
+    <!-- 頂部導覽列 -->
     <header>
         <a href="#" class="logo-container">
             <img src="logo1.jpg" alt="GF-Diam Logo" class="logo-img">
@@ -181,7 +273,7 @@
         </nav>
     </header>
 
-    <!-- HERO SLIDER 精巧模板輪播大圖 -->
+    <!-- HERO SLIDER -->
     <div class="slider-section">
         <div class="slider-container">
             <div class="slide active">
@@ -203,7 +295,6 @@
     <p class="section-subtitle">支持來圖客製化戒托 ｜ 附國際認證書</p>
     
     <div class="products-grid">
-        <!-- 產品 1 -->
         <div class="product-card">
             <img src="banner1004.jpg" alt="1.5ct D色 VS 淨度 圓形鑽石">
             <div class="product-info">
@@ -214,7 +305,6 @@
             </div>
         </div>
 
-        <!-- 產品 2 -->
         <div class="product-card">
             <img src="banner1005.jpg" alt="2ct D色 VS 淨度 圓形鑽石">
             <div class="product-info">
@@ -225,7 +315,6 @@
             </div>
         </div>
 
-        <!-- 產品 3 -->
         <div class="product-card">
             <img src="banner1001.jpg" alt="Happy Heart Fancy Intense Pink 1卡">
             <div class="product-info">
@@ -236,7 +325,6 @@
             </div>
         </div>
 
-        <!-- 產品 4 -->
         <div class="product-card">
             <img src="banner1002.jpg" alt="2 Ct D VS EX N 橢圓形鑽石">
             <div class="product-info">
@@ -247,7 +335,6 @@
             </div>
         </div>
 
-        <!-- 產品 5 -->
         <div class="product-card">
             <img src="banner1003.jpg" alt="2 Ct D VS EX N 祖母綠/長方形鑽石">
             <div class="product-info">
@@ -269,7 +356,7 @@
         </div>
     </div>
 
-    <!-- 訂製流程 4 步驟 -->
+    <!-- 訂製流程 -->
     <h2 class="section-title" id="process">訂製流程</h2>
     <p class="section-subtitle">專屬客製化與首飾改造服務</p>
 
@@ -302,37 +389,73 @@
         </div>
     </div>
 
+    <!-- 公司資訊黑底 Banner 區塊 (放置於「關注與聯絡我們」上方) -->
+    <div class="company-info-banner">
+        <div class="company-info-container">
+            <!-- 頂部標題與註冊資訊 -->
+            <div class="info-top-header">
+                <div class="main-title">濠師傅珠寶改造專家</div>
+                <div class="sub-title">Master Ho Jewels Redesign</div>
+                <div class="reg-info">
+                    香港法例第615章A類註冊人註冊證明書(第53ZUG條)<br>
+                    註冊號碼: A-B-23-12-03104
+                </div>
+            </div>
+
+            <!-- 下方內容 (左邊圖片 + 右邊地址與營業時間) -->
+            <div class="info-body-grid">
+                <!-- 左邊圖片 (即 footer001.png) -->
+                <div class="info-image-box">
+                    <img src="footer001.png" alt="珠寶訂造改款 在線即時估價">
+                </div>
+
+                <!-- 右邊詳細文字 -->
+                <div class="info-details-box">
+                    <!-- Contact Us -->
+                    <div class="info-col">
+                        <h3>Contact Us</h3>
+                        <p>尖沙咀漆咸道南87-105號百利商業中心14F 1420室</p>
+                        <p>(港鐵尖沙咀 B2出口 步行約10分鐘科學館對面)</p>
+                    </div>
+
+                    <!-- Business Hours (已改為 Mon to Sat : 11:30-18:30) -->
+                    <div class="info-col">
+                        <h3>Business Hours</h3>
+                        <p>Mon to Sat : 11:30-18:30</p>
+                        <p style="margin-top:25px;">珠寶改造專家 | 濠師傅</p>
+                        <p>即時報價 Whats App: 62769030</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 社交平台與聯絡 Jump 區塊 -->
     <section class="social-jump-section" id="socials">
         <h2 class="section-title" style="margin-top:0;">關注與聯絡我們</h2>
         <p class="section-subtitle">查看更多實物款式與客戶好評</p>
 
         <div class="social-grid">
-            <!-- Carousell -->
             <a href="https://www.carousell.com.hk/u/gf-diam/" target="_blank" class="social-item">
                 <div class="social-icon-box bg-carousell">C</div>
                 <span>Carousell</span>
             </a>
 
-            <!-- Facebook -->
             <a href="https://www.facebook.com/goldenfashion0418?mibextid=wwXIfr" target="_blank" class="social-item">
                 <div class="social-icon-box bg-facebook"><i class="fab fa-facebook-f"></i></div>
                 <span>Facebook</span>
             </a>
 
-            <!-- Instagram -->
             <a href="https://www.instagram.com/gamfook_diamant?igsh=MTZueWg2cmZnN2R2eg%3D%3D&utm_source=qr" target="_blank" class="social-item">
                 <div class="social-icon-box bg-instagram"><i class="fab fa-instagram"></i></div>
                 <span>Instagram</span>
             </a>
 
-            <!-- Google Maps 導航 -->
             <a href="https://maps.app.goo.gl/qrumFRv98FqpxCJz9?g_st=ic" target="_blank" class="social-item">
                 <div class="social-icon-box bg-maps"><i class="fas fa-map-marker-alt"></i></div>
                 <span>導航</span>
             </a>
 
-            <!-- Google Review 評論 -->
             <a href="https://g.page/r/CW9MlDhFkhjEEAE/review" target="_blank" class="social-item">
                 <div class="social-icon-box bg-review"><i class="fab fa-google"></i></div>
                 <span>評論</span>

@@ -23,7 +23,7 @@
         body { background-color: var(--bg-white); color: var(--text-dark); line-height: 1.6; }
 
         /* --------------------------------------------------
-           頂部 Header
+            頂部 Header
         -------------------------------------------------- */
         header { 
             background: #ffffff; 
@@ -91,7 +91,7 @@
         }
 
         /* --------------------------------------------------
-           HERO SLIDER
+            HERO SLIDER
         -------------------------------------------------- */
         .slider-section { padding: 20px 5% 10px; max-width: 840px; margin: 0 auto; }
         .slider-container { position: relative; width: 100%; height: 280px; border-radius: 12px; overflow: hidden; background: #f5f5f5; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
@@ -109,7 +109,7 @@
         .section-title { text-align: center; font-size: 1.6rem; color: var(--text-dark); margin: 40px 0 10px; font-weight: 600; letter-spacing: 1px; }
         .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 35px; font-size: 0.9rem; }
 
-        /* 鑽石產品區 */
+        /* 產品區 */
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
         .product-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); transition: 0.3s; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
@@ -135,7 +135,7 @@
         .step-desc li::before { content: "•"; color: var(--accent-gold); position: absolute; left: 0; }
 
         /* --------------------------------------------------
-           公司資訊大 Banner (新增於「關注與聯絡我們」上方)
+            公司資訊大 Banner (新增於「關注與聯絡我們」上方)
         -------------------------------------------------- */
         .company-info-banner {
             background-color: #111111;
@@ -290,21 +290,23 @@
         </div>
     </div>
 
-    <!-- 鑽石產品展售區 -->
-    <h2 class="section-title" id="products">精選特價鑽石</h2>
+    <!-- 產品展售區 -->
+    <h2 class="section-title" id="products">精選特價產品</h2>
     <p class="section-subtitle">支持來圖客製化戒托 ｜ 附國際認證書</p>
     
     <div class="products-grid">
+        <!-- 產品 1：已替換為 10-11mm 澳白珍珠 -->
         <div class="product-card">
-            <img src="banner1004.jpg" alt="1.5ct D色 VS 淨度 圓形鑽石">
+            <img src="white.jpg" alt="10-11mm 澳白珍珠">
             <div class="product-info">
                 <span class="product-tag">全港最筍價</span>
-                <div class="product-title">1.5ct D色 VS 淨度 圓形鑽石</div>
-                <div class="product-price">$: 2,288</div>
-                <a href="https://wa.me/85262769030?text=你好，我想查詢1.5ct D色 VS淨度 ($2,288) 鑽石" class="btn-ws" target="_blank">💬 即時查詢</a>
+                <div class="product-title">10 - 11mm 澳白珍珠</div>
+                <div class="product-price">$: 1,800</div>
+                <a href="https://wa.me/85262769030?text=你好，我想查詢10-11mm 澳白珍珠 ($1,800)" class="btn-ws" target="_blank">💬 即時查詢</a>
             </div>
         </div>
 
+        <!-- 產品 2 -->
         <div class="product-card">
             <img src="banner1005.jpg" alt="2ct D色 VS 淨度 圓形鑽石">
             <div class="product-info">
@@ -315,6 +317,7 @@
             </div>
         </div>
 
+        <!-- 產品 3 -->
         <div class="product-card">
             <img src="banner1001.jpg" alt="Happy Heart Fancy Intense Pink 1卡">
             <div class="product-info">
@@ -325,6 +328,7 @@
             </div>
         </div>
 
+        <!-- 產品 4 -->
         <div class="product-card">
             <img src="banner1002.jpg" alt="2 Ct D VS EX N 橢圓形鑽石">
             <div class="product-info">
@@ -335,6 +339,7 @@
             </div>
         </div>
 
+        <!-- 產品 5 -->
         <div class="product-card">
             <img src="banner1003.jpg" alt="2 Ct D VS EX N 祖母綠/長方形鑽石">
             <div class="product-info">
@@ -389,10 +394,9 @@
         </div>
     </div>
 
-    <!-- 公司資訊黑底 Banner 區塊 (放置於「關注與聯絡我們」上方) -->
+    <!-- 公司資訊黑底 Banner 區塊 -->
     <div class="company-info-banner">
         <div class="company-info-container">
-            <!-- 頂部標題與註冊資訊 -->
             <div class="info-top-header">
                 <div class="main-title">濠師傅珠寶改造專家</div>
                 <div class="sub-title">Master Ho Jewels Redesign</div>
@@ -402,23 +406,18 @@
                 </div>
             </div>
 
-            <!-- 下方內容 (左邊圖片 + 右邊地址與營業時間) -->
             <div class="info-body-grid">
-                <!-- 左邊圖片 (即 footer001.png) -->
                 <div class="info-image-box">
                     <img src="footer001.png" alt="珠寶訂造改款 在線即時估價">
                 </div>
 
-                <!-- 右邊詳細文字 -->
                 <div class="info-details-box">
-                    <!-- Contact Us -->
                     <div class="info-col">
                         <h3>Contact Us</h3>
                         <p>尖沙咀漆咸道南87-105號百利商業中心14F 1420室</p>
                         <p>(港鐵尖沙咀 B2出口 步行約10分鐘科學館對面)</p>
                     </div>
 
-                    <!-- Business Hours (已改為 Mon to Sat : 11:30-18:30) -->
                     <div class="info-col">
                         <h3>Business Hours</h3>
                         <p>Mon to Sat : 11:30-18:30</p>

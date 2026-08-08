@@ -120,9 +120,125 @@
         .product-price { color: var(--price-red); font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; }
 
         /* 維修展示區 */
-        .repair-section { padding: 0 5%; max-width: 1200px; margin: 0 auto 40px; }
+        .repair-section { padding: 0 5%; max-width: 1200px; margin: 0 auto 20px; }
         .repair-banner { width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.08); text-align: center; border: 1px solid var(--border-color); }
         .repair-banner img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+        /* --------------------------------------------------
+            價目表區塊 (Price List Table Section)
+        -------------------------------------------------- */
+        .pricelist-section {
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .pricelist-notice {
+            background: #fffdf8;
+            border: 1px solid #f3e6c8;
+            border-radius: 8px;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.88rem;
+            color: #8a6d3b;
+            margin-bottom: 25px;
+        }
+
+        /* 頁籤 Toggle */
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #f5f5f5;
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent-gold);
+            color: white;
+            border-color: var(--accent-gold);
+        }
+
+        .price-tab-content {
+            display: none;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            overflow-x: auto;
+        }
+
+        .price-tab-content.active {
+            display: block;
+        }
+
+        /* 價格表格 */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            min-width: 550px;
+        }
+
+        .price-table th {
+            background-color: #fcfaf7;
+            color: var(--text-dark);
+            padding: 14px 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-bottom: 2px solid #e8e1d5;
+        }
+
+        .price-table td {
+            padding: 14px 10px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.92rem;
+            color: #444;
+        }
+
+        .price-table tr:hover {
+            background-color: #fafafa;
+        }
+
+        .price-highlight {
+            color: var(--price-red);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .table-action-cell {
+            white-space: nowrap;
+        }
+
+        .btn-table-ws {
+            background-color: var(--whatsapp-green);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-table-ws:hover {
+            background-color: #1eb954;
+        }
 
         /* 訂製流程 */
         .process-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 0 5%; max-width: 1200px; margin: 0 auto; }
@@ -134,9 +250,7 @@
         .step-desc li { margin-bottom: 4px; position: relative; padding-left: 12px; }
         .step-desc li::before { content: "•"; color: var(--accent-gold); position: absolute; left: 0; }
 
-        /* --------------------------------------------------
-            公司資訊大 Banner (新增於「關注與聯絡我們」上方)
-        -------------------------------------------------- */
+        /* 公司資訊黑底 Banner */
         .company-info-banner {
             background-color: #111111;
             color: #ffffff;
@@ -255,6 +369,7 @@
             nav { gap: 12px; }
             nav a { font-size: 0.9rem; }
             .slider-container { height: 200px; }
+            .price-tab-content { padding: 15px 10px; }
         }
     </style>
 </head>
@@ -268,6 +383,7 @@
         <nav>
             <a href="#products">熱賣產品</a>
             <a href="#repair">維修改款</a>
+            <a href="#pricelist">價目表</a>
             <a href="#process">訂製流程</a>
             <a href="#socials">聯絡我們</a>
         </nav>
@@ -295,9 +411,9 @@
     <p class="section-subtitle">支持來圖客製化戒托 ｜ 附國際認證書</p>
     
     <div class="products-grid">
-        <!-- 產品 1：已替換為 10-11mm 澳白珍珠 -->
+        <!-- 產品 1 -->
         <div class="product-card">
-            <img src="white.jpg" alt="10-11mm 澳白珍珠">
+            <img src="banner1004.jpg" alt="10-11mm 澳白珍珠">
             <div class="product-info">
                 <span class="product-tag">全港最筍價</span>
                 <div class="product-title">10 - 11mm 澳白珍珠</div>
@@ -358,6 +474,130 @@
     <div class="repair-section">
         <div class="repair-banner">
             <img src="repair-services.jpg" alt="GF-Diam 專業珠寶維修與改款服務展集">
+        </div>
+    </div>
+
+    <!-- 培育鑽石價目表區塊 -->
+    <h2 class="section-title" id="pricelist">培育鑽石價目表</h2>
+    <p class="section-subtitle">Lab Grown Diamond Clear Price List</p>
+
+    <div class="pricelist-section">
+        <div class="pricelist-notice">
+            ⚠️ 嚴選無奶咖 ｜ 無熒光 ｜ 附 IGI 國際證書 ｜ 支持來圖定制戒托
+        </div>
+
+        <!-- 分頁切換按鈕 -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab(event, 'tab-round')">圓形鑽石 (Round)</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-fancy')">異形鑽石 (Fancy Shape)</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-color')">彩鑽系列 (Colored Diamond)</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-wedding')">結婚季震撼價 (Special Sale)</button>
+        </div>
+
+        <!-- Tab 1: 圓形鑽石價目表 -->
+        <div id="tab-round" class="price-tab-content active">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>克拉 (Carat)</th>
+                        <th>顏色 (Color)</th>
+                        <th>淨度 (Clarity)</th>
+                        <th>切工 (Cut)</th>
+                        <th>價格 (HKD)</th>
+                        <th>查詢</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1 卡</td><td>D</td><td>VS</td><td>3EX</td><td class="price-highlight">$1,588</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1卡 D VS 3EX 圓形鑽石 ($1,588)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>1.5 卡</td><td>D</td><td>VS</td><td>3EX</td><td class="price-highlight">$2,388</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1.5卡 D VS 3EX 圓形鑽石 ($2,388)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>2 卡</td><td>D</td><td>VS</td><td>3EX</td><td class="price-highlight">$3,399</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 D VS 3EX 圓形鑽石 ($3,399)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>2.5 卡</td><td>D</td><td>VS</td><td>3EX</td><td class="price-highlight">$4,988</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2.5卡 D VS 3EX 圓形鑽石 ($4,988)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>3 卡</td><td>D</td><td>VS</td><td>3EX</td><td class="price-highlight">$6,599</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 3卡 D VS 3EX 圓形鑽石 ($6,599)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>3.5 卡</td><td>D</td><td>VS</td><td>3EX</td><td class="price-highlight">$9,688</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 3.5卡 D VS 3EX 圓形鑽石 ($9,688)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>4 卡</td><td>D</td><td>VS</td><td>3EX</td><td class="price-highlight">$12,588</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 4卡 D VS 3EX 圓形鑽石 ($12,588)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>4.5 卡</td><td>D</td><td>VS</td><td>3EX</td><td class="price-highlight">$16,888</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 4.5卡 D VS 3EX 圓形鑽石 ($16,888)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tab 2: 異形鑽石價目表 -->
+        <div id="tab-fancy" class="price-tab-content">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>形狀 (Shape)</th>
+                        <th>克拉 (Carat)</th>
+                        <th>顏色 (Color)</th>
+                        <th>淨度 (Clarity)</th>
+                        <th>切工 (Cut)</th>
+                        <th>價格 (HKD)</th>
+                        <th>查詢</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td rowspan="3">心型 (Heart)</td><td>1.5 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$2,999</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1.5卡 心型鑽石 ($2,999)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>2 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$3,777</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 心型鑽石 ($3,777)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>3 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$6,888</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 3卡 心型鑽石 ($6,888)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    
+                    <tr><td rowspan="2">梨型 (Pear)</td><td>2 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$3,999</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 梨型鑽石 ($3,999)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>3 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$5,888</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 3卡 梨型鑽石 ($5,888)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+
+                    <tr><td rowspan="2">鵝蛋型 (Oval)</td><td>2 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$2,999</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 鵝蛋型鑽石 ($2,999)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>3 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$4,999</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 3卡 鵝蛋型鑽石 ($4,999)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+
+                    <tr><td rowspan="2">祖母型 (Emerald)</td><td>2 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$2,566</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 祖母綠型鑽石 ($2,566)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>3 卡</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$6,080</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 3卡 祖母綠型鑽石 ($6,080)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tab 3: 彩鑽系列價目表 -->
+        <div id="tab-color" class="price-tab-content">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>形狀 (Shape)</th>
+                        <th>顏色 (Color)</th>
+                        <th>克拉 (Carat)</th>
+                        <th>彩鑽級別</th>
+                        <th>淨度</th>
+                        <th>價格 (HKD)</th>
+                        <th>查詢</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td rowspan="2">心型</td><td>粉色</td><td>1.5 卡</td><td>FIP</td><td>VS</td><td class="price-highlight">$5,888</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1.5卡 心型粉鑽 ($5,888)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>粉色</td><td>2 卡</td><td>FIP</td><td>VS</td><td class="price-highlight">$9,388</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 心型粉鑽 ($9,388)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>雷迪恩</td><td>粉色</td><td>2 卡</td><td>FVP</td><td>VS</td><td class="price-highlight">$9,988</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 雷迪恩粉鑽 ($9,988)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>橢圓</td><td>粉色</td><td>2 卡</td><td>FVP</td><td>VS</td><td class="price-highlight">$9,888</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 橢圓粉鑽 ($9,888)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>梨型</td><td>粉色</td><td>1.5 卡</td><td>FVP</td><td>VS</td><td class="price-highlight">$7,888</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1.5卡 梨型粉鑽 ($7,888)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>雷迪恩</td><td>藍色</td><td>2 卡</td><td>FIB</td><td>VS</td><td class="price-highlight">$7,988</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2卡 雷迪恩藍鑽 ($7,988)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tab 4: 結婚季震撼價 -->
+        <div id="tab-wedding" class="price-tab-content">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>形狀 (Shape)</th>
+                        <th>克拉 (Carat)</th>
+                        <th>顏色 (Color)</th>
+                        <th>淨度 (Clarity)</th>
+                        <th>切工 (Cut)</th>
+                        <th>震撼價 (HKD)</th>
+                        <th>查詢</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>馬眼 (Marquise)</td><td>1.5ct</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$2,800</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1.5ct 馬眼鑽石 ($2,800)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>公主方 (Princess Square)</td><td>1.5ct</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$2,700</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1.5ct 公主方鑽石 ($2,700)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>雷迪恩 (Radiant)</td><td>2ct</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$3,800</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 2ct 雷迪恩鑽石 ($3,800)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>阿斯切 (Asscher)</td><td>1.5ct</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$2,980</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1.5ct 阿斯切鑽石 ($2,980)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                    <tr><td>水滴 (Pear)</td><td>1.5ct</td><td>D</td><td>VS</td><td>EX</td><td class="price-highlight">$2,800</td><td class="table-action-cell"><a href="https://wa.me/85262769030?text=你好，我想查詢 1.5ct 水滴鑽石 ($2,800)" target="_blank" class="btn-table-ws">💬 查詢</a></td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -469,8 +709,9 @@
         <p>© 2026 GF-Diam Wedding ring. All Rights Reserved.</p>
     </footer>
 
-    <!-- HERO SLIDER 腳本 -->
+    <!-- HERO SLIDER & TAB 腳本 -->
     <script>
+        // Banner 輪播圖
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
@@ -498,6 +739,22 @@
         function resetTimer() {
             clearInterval(timer);
             timer = setInterval(nextSlide, slideInterval);
+        }
+
+        // 價目表 Tab 切換功能
+        function switchTab(evt, tabId) {
+            const tabContents = document.getElementsByClassName('price-tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
         }
     </script>
 </body>
